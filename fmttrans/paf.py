@@ -8,6 +8,9 @@
 # @Software: PyCharm
 
 from fmttrans.defaults import paf_elements, fill_namedtuple
+from fmttrans.samtag import Samtag
+from fmttrans.utils import file_exists
+
 
 
 class Paf:
@@ -33,6 +36,8 @@ source from https://github.com/lh3/miniasm/edit/master/PAF.md
     '''
 
     def __init__(self, filename):
+        if not file_exists(filename):
+            raise FileNotFoundError(filename + 'not exists')
         self._filename = filename
         self.file_buffer = open(self._filename, 'r')
 
@@ -51,7 +56,7 @@ source from https://github.com/lh3/miniasm/edit/master/PAF.md
         if len(cells) <= 12:
             return fill_namedtuple(paf_elements, cells)
         else:
-            return fill_namedtuple(paf_elements, [*cells[0:12], cells[12:]])
+            return fill_namedtuple(paf_elements, [*cells[0:12], [Samtag(i) for i in cells[12:]]])
 
     def __str__(self):
         return 'filename:' + self._filename
@@ -60,4 +65,5 @@ source from https://github.com/lh3/miniasm/edit/master/PAF.md
         return 'filename:' + self._filename
 
     def __del__(self):
-        self.file_buffer.close()
+        if 'file_buffer' in self.__dict__:
+            self.file_buffer.close()
