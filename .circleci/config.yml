@@ -39,6 +39,7 @@ jobs:
           command: |
             source activate tests
             python -m unittest tests/test_paf.py
+            python -m unittest tests/test_samtag.py
 
 
 workflows:
