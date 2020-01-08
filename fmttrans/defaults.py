@@ -20,6 +20,9 @@ paf_elements = namedtuple('paf_elements',
                            'target_length', 'target_start', 'target_end', 'number_match', 'align_block_len',
                            'mapping_quality', 'sam_tag'])
 
+region = namedtuple('region',
+                    ['contig','start','end'])
+
 samtag_description = {
     'tp': 'Type of aln: P/primary, S/secondary and I,i/inversion',
     'cm': 'Number of minimizers on the chain',
@@ -37,3 +40,5 @@ samtag_description = {
     'de': 'Gap-compressed per-base sequence divergence',
     'rl': 'Length of query regions harboring repetitive seeds',
 }
+
+
