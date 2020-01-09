@@ -45,7 +45,7 @@ class TestPaf(TestCase):
 
     def test_iter(self):
         for i in self.paf:
-            self.assertEqual(i, self.nt, msg='iter+paf elements wrong')
+            self.assertIsInstance(i, paf_elements, msg='iter+paf elements wrong')
             break
 
     def test_initial(self):
