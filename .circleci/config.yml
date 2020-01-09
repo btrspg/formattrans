@@ -41,7 +41,7 @@ jobs:
             python -m unittest tests/test_paf.py
             python -m unittest tests/test_samtag.py
             python -m unittest tests/test_paf2gtf.py
-            python -m unittest tests/test_untils.py
+            python -m unittest tests/test_utils.py
 
 
 workflows:
