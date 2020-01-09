@@ -9,9 +9,34 @@
 import unittest
 from unittest import TestCase
 from fmttrans.utils import *
-
+from fmttrans.defaults import paf_elements
+from fmttrans.samtag import Samtag
 
 class Test(TestCase):
+
+    def setUp(self):
+
+        self.nt = paf_elements(
+            query_name='TRINITY_DN93842_c0_g1_i1',
+            query_len='346',
+            query_start='0',
+            query_end='345',
+            strand='+',
+            target_name='15',
+            target_length='101991189',
+            target_start='65122294',
+            target_end='65122639',
+            number_match='336',
+            align_block_len='345',
+            mapping_quality='60',
+            sam_tag={'tp': Samtag('tp:A:P'),
+                     'cm': Samtag('cm:i:94'),
+                     's1': Samtag('s1:i:336'),
+                     's2': Samtag('s2:i:0'),
+                     'dv': Samtag('dv:f:0.0021'),
+                     'rl': Samtag('rl:i:62')}
+        )
+
     def test_file_exists(self):
         self.assertEqual(file_exists('./test/not-a-file'), [False], msg='test_file_exists')
         self.assertEqual(file_exists(__file__, __file__), [True, True], msg='test_file_exists')
@@ -40,6 +65,11 @@ class Test(TestCase):
         with self.assertRaises(TypeError):
             align2exons(67173553, 67176084, extract_cg_value(tag))
 
+    def test_mapped_length_rate(self):
+        self.assertEqual(mapped_length_rate(self.nt),1,msg='mapped calculate wrong')
+
+    def test_align_identity(self):
+        self.assertEqual(align_identity(self.nt),336/345,msg='identity calculate wrong')
 
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@ def paf2gtf(paf_file,gtf_file,mapped_length_r=0.9,mapping_q=60,align_ident=0.9):
     '''
     paf = Paf(paf_file)
     for pafe in paf:
-        if mapped_length_rate(paf) > mapped_length_r and \
+        if mapped_length_rate(pafe) > mapped_length_r and \
                 float(pafe.mapping_quality) > mapping_q and \
                 align_identity(pafe) > align_ident:
            exons=align2exons(int(pafe.target_start),

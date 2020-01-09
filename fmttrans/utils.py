@@ -94,7 +94,7 @@ def mapped_length_rate(pafe):
     :param pafe:
     :return:
     '''
-    return (float(pafe.query_end) - float(pafe.query_start)) / float(pafe.query_length)
+    return (float(pafe.query_end) - float(pafe.query_start) + 1) / float(pafe.query_len)
 
 
 def align_identity(pafe):
