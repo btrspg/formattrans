@@ -32,8 +32,12 @@ class TestPaf(TestCase):
             number_match='336',
             align_block_len='345',
             mapping_quality='60',
-            sam_tag=[Samtag('tp:A:P'), Samtag('cm:i:94'), Samtag('s1:i:336'), Samtag('s2:i:0'), Samtag('dv:f:0.0021'),
-                     Samtag('rl:i:62')]
+            sam_tag={'tp': Samtag('tp:A:P'),
+                     'cm': Samtag('cm:i:94'),
+                     's1': Samtag('s1:i:336'),
+                     's2': Samtag('s2:i:0'),
+                     'dv': Samtag('dv:f:0.0021'),
+                     'rl': Samtag('rl:i:62')}
         )
 
     def test_line2elements(self):
