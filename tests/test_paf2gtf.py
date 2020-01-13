@@ -17,7 +17,15 @@ class Test(TestCase):
         self.gtf_file = './tests/test-data/trinity.gtf'
 
     def test_paf2gtf(self):
-        self.assertEqual(paf2gtf(self.paf_file, self.gtf_file,0,0,0,'test'), True, msg='run work')
+        from collections import namedtuple
+        Args=namedtuple('Args',['paf','gtf','mapped_length_rate','mapping_quality','align_identity','tag'])
+        args=Args(paf=self.paf_file,
+                  gtf=self.gtf_file,
+                  mapped_length_rate=0,
+                  mapping_quality=0,
+                  align_identity=0,
+                  tag='test')
+        self.assertEqual(paf2gtf(args), True, msg='run work')
 
 
 if __name__ == '__main__':
