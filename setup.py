@@ -1,6 +1,6 @@
 from setuptools import setup
 
-scripts=['fmttrans.py']
+scripts=['ft.py']
 
 with open('readme.md','r') as f:
     description=f.read()
