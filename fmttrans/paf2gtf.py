@@ -37,7 +37,7 @@ def paf2gtf(args):
                                     extract_cg_value(pafe.sam_tag['cg'].value),
                                     pafe.strand)
                 transcript_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
-                                    'trascript_id "{}.{}";'.format(tag.upper(), str(number)),
+                                    'trascript_id "{}.{}.1";'.format(tag.upper(), str(number)),
                                     'total_exon_number "{}";'.format(len(exons))]
                 transcript = [pafe.target_name,
                               tag,
