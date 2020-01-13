@@ -29,9 +29,9 @@ def paf2gtf(args):
     with open(gtf_file, 'w') as fout:
         number = 1
         for pafe in paf:
-            if mapped_length_rate(pafe) > mapped_length_r and \
-                    float(pafe.mapping_quality) > mapping_q and \
-                    align_identity(pafe) > align_ident:
+            if mapped_length_rate(pafe) >= mapped_length_r and \
+                    float(pafe.mapping_quality) >= mapping_q and \
+                    align_identity(pafe) >= align_ident:
                 exons = align2exons(int(pafe.target_start),
                                     int(pafe.target_end),
                                     extract_cg_value(pafe.sam_tag['cg'].value),
