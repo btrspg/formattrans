@@ -29,19 +29,19 @@ def paf2gtf(args):
     with open(gtf_file, 'w') as fout:
         number = 1
         for pafe in paf:
-            if mapped_length_rate(pafe) > mapped_length_r and \
-                    float(pafe.mapping_quality) > mapping_q and \
-                    align_identity(pafe) > align_ident:
+            if mapped_length_rate(pafe) >= mapped_length_r and \
+                    float(pafe.mapping_quality) >= mapping_q and \
+                    align_identity(pafe) >= align_ident:
                 exons = align2exons(int(pafe.target_start),
                                     int(pafe.target_end),
                                     extract_cg_value(pafe.sam_tag['cg'].value),
                                     pafe.strand)
                 transcript_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
-                                    'trascript_id "{}.{}";'.format(tag.upper(), str(number)),
+                                    'transcript_id "{}.{}.1";'.format(tag.upper(), str(number)),
                                     'total_exon_number "{}";'.format(len(exons))]
                 transcript = [pafe.target_name,
                               tag,
-                              'trascript',
+                              'transcript',
                               pafe.target_start,
                               pafe.target_end,
                               pafe.mapping_quality,
@@ -51,9 +51,9 @@ def paf2gtf(args):
                 fout.write('\t'.join(transcript)+'\n')
                 for i, exon in enumerate(exons):
                     exon_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
-                                  'trascript_id "{}.{}";'.format(tag.upper(), str(number)),
+                                  'transcript_id "{}.{}";'.format(tag.upper(), str(number)),
                                   'total_exon_number "{}";'.format(len(exons)),
-                                  'exon_number "{}";'.format(str(i))]
+                                  'exon_number "{}";'.format(str(i+1))]
                     exon_out= [pafe.target_name,
                                tag,
                                'exon',
