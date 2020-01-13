@@ -37,11 +37,11 @@ def paf2gtf(args):
                                     extract_cg_value(pafe.sam_tag['cg'].value),
                                     pafe.strand)
                 transcript_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
-                                    'trascript_id "{}.{}.1";'.format(tag.upper(), str(number)),
+                                    'transcript_id "{}.{}.1";'.format(tag.upper(), str(number)),
                                     'total_exon_number "{}";'.format(len(exons))]
                 transcript = [pafe.target_name,
                               tag,
-                              'trascript',
+                              'transcript',
                               pafe.target_start,
                               pafe.target_end,
                               pafe.mapping_quality,
@@ -51,7 +51,7 @@ def paf2gtf(args):
                 fout.write('\t'.join(transcript)+'\n')
                 for i, exon in enumerate(exons):
                     exon_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
-                                  'trascript_id "{}.{}";'.format(tag.upper(), str(number)),
+                                  'transcript_id "{}.{}";'.format(tag.upper(), str(number)),
                                   'total_exon_number "{}";'.format(len(exons)),
                                   'exon_number "{}";'.format(str(i+1))]
                     exon_out= [pafe.target_name,
