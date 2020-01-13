@@ -56,7 +56,7 @@ source from https://github.com/lh3/miniasm/edit/master/PAF.md
         if len(cells) <= 12:
             return fill_namedtuple(paf_elements, cells)
         else:
-            return fill_namedtuple(paf_elements, [*cells[0:12], [Samtag(i) for i in cells[12:]]])
+            return fill_namedtuple(paf_elements, [*cells[0:12], dict((j.tag,j) for j in [Samtag(i) for i in cells[12:]])])
 
     def __str__(self):
         return 'filename:' + self._filename
