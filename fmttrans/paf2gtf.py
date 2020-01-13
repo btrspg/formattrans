@@ -53,7 +53,7 @@ def paf2gtf(args):
                     exon_attri = ['gene_id "{}.{}";'.format(tag.upper(), str(number)),
                                   'trascript_id "{}.{}";'.format(tag.upper(), str(number)),
                                   'total_exon_number "{}";'.format(len(exons)),
-                                  'exon_number "{}";'.format(str(i))]
+                                  'exon_number "{}";'.format(str(i+1))]
                     exon_out= [pafe.target_name,
                                tag,
                                'exon',
