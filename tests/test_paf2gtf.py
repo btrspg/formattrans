@@ -17,7 +17,7 @@ class Test(TestCase):
         self.gtf_file = './tests/test-data/trinity.gtf'
 
     def test_paf2gtf(self):
-        self.assertEqual(paf2gtf(self.paf_file, self.gtf_file), True, msg='run work')
+        self.assertEqual(paf2gtf(self.paf_file, self.gtf_file,0,0,0,'test'), True, msg='run work')
 
 
 if __name__ == '__main__':
