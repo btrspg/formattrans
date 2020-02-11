@@ -8,9 +8,14 @@
 # @Software: PyCharm
 
 import os
+import logging
 from fmttrans.pattern import cg_tag_pattern
 from fmttrans.defaults import fill_namedtuple, region
 
+
+log_format = '%(asctime)s %(filename)s [%(levelname)s] %(message)s'
+logging.basicConfig(format=log_format, level=logging.INFO)
+log = logging.getLogger('MRS')
 
 def file_exists(*filenames):
     return [os.path.exists(filename) for filename in filenames]
@@ -104,6 +109,32 @@ def align_identity(pafe):
     :return:
     '''
     return float(pafe.number_match) / float(pafe.align_block_len)
+
+
+def write_file(filename, anyclass):
+    '''
+
+    :param filename:
+    :param anyclass:
+    :return:
+    '''
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'w') as f:
+        if isinstance(anyclass, str):
+            f.write(anyclass)
+        elif isinstance(anyclass, dict):
+            for i in anyclass:
+                f.write('{}:{}'.format(i, anyclass[i]))
+                f.write('\n')
+        elif isinstance(anyclass, list):
+            for i in anyclass:
+                if isinstance(i, list):
+                    stri = [str(j) for j in i]
+                    f.write('\t'.join(stri))
+                    f.write('\n')
+                elif isinstance(i,str):
+                    f.write(i)
+                    f.write('\n')
 
 
 def main():

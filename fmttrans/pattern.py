@@ -10,3 +10,4 @@
 import re
 
 cg_tag_pattern = re.compile('([0-9]+)([MNDI])')
+gtf_transcript_pattern = re.compile('transcript_id "([\.A-Z0-9]+?)"')

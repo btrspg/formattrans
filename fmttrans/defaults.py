@@ -41,4 +41,4 @@ samtag_description = {
     'rl': 'Length of query regions harboring repetitive seeds',
 }
 
-
+PLOT_GENE_LIST = ['TP53']
