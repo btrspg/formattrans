@@ -9,6 +9,8 @@
 
 import argparse
 from fmttrans.args import *
+
+
 def main():
     parser = argparse.ArgumentParser(description='Biology data format transform',
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -16,8 +18,11 @@ def main():
 
     # minimap2 paf file transform to gtf file
     paf2gtf_args(parser_sub)
+    # extract consistent and inconsistent transcripts and create bed file
+    divide2bed_args(parser_sub)
     args = parser.parse_args()
     args.func(args)
+
 
 if __name__ == '__main__':
     main()
