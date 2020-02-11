@@ -102,7 +102,7 @@ def divide2bed(args):
             cells = line.strip().split('\t')
             if not line.startswith('#') and cells[2] == 'transcript':
                 tsp = gtf_transcript_pattern.findall(line)[0]
-                if tsp in transcript_dict['inconsistent']['novel'].append(known_tsp):
+                if tsp in transcript_dict['inconsistent']['novel']:
                     inconsistent_bed.append([
                         cells[0],
                         cells[3],
