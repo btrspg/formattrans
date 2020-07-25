@@ -2,6 +2,8 @@ from setuptools import setup
 
 scripts=['ft.py']
 
+entry_points = { 'console_scripts': ['fc2o=fmttrans.pipelines:fc2o'] }
+
 with open('readme.md','r') as f:
     description=f.read()
 setup(
@@ -13,5 +15,6 @@ setup(
     license='',
     author='CHEN, Yuelong',
     author_email='yuelong.chen.btr@gmail.com',
-    description=description
+    description=description,
+    entry_points=entry_points
 )
